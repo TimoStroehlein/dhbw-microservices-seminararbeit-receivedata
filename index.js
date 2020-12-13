@@ -42,31 +42,6 @@ app.post('/values',  async(req, res) =>{
     res.status(201).send(measurements[id]);
 });
 
-app.post('/error',  async(req, res) =>{
-    // 001hs generate a unique id for each new post request
-    const id = randomBytes(4).toString('hex');
-    
-    // get the data from request body
-    const { data } = req.body;
-    const { devid} = req.body.data[0];
-    // put the data into the data array with id as key
-    measurement[id] = {
-        id,data
-    };
-    console.log(measurement[id]);
-    
-    // send data to event bus
-    await axios.post('http://localhost:4005/events', {
-        type: 'Measurement received',
-        measurementdata: { 
-            id,
-            error
-        } 
-    });
-    //  return status 201 to client and the data itself
-    res.status(201).send(measurements[id]);
-});
-
 app.listen(4000, () =>{
     console.log('Listening on port 4000')
 })
