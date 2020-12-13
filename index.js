@@ -39,8 +39,9 @@ app.post('/values',  async(req, res) =>{
         } 
     });
     //  return status 201 to client and the data itself
-    res.status(201).send(measurements[id]);
+    res.status(201).send(measurement[id]);
 });
+
 
 app.listen(4000, () =>{
     console.log('Listening on port 4000')
