@@ -23,7 +23,7 @@ app.post('/values',  async(req, res) =>{
     
     // get the data from request body
     const { data } = req.body;
-    const { devid} = req.body.data[0];
+    const { devid } = req.body.data[0];
     // put the data into the data array with id as key
     measurement[id] = {
         id,data
@@ -45,4 +45,4 @@ app.post('/values',  async(req, res) =>{
 
 app.listen(4000, () =>{
     console.log('Listening on port 4000')
-})
+});
