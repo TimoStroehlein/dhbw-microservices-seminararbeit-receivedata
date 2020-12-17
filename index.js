@@ -1,5 +1,6 @@
 // simple node.js application to receive data from clients and keep this data in memeory
 
+require('dotenv').config({path: 'endpoints.env'})  // read endpoints.env file
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -31,7 +32,7 @@ app.post('/values',  async(req, res) =>{
     console.log(measurement[id]);
     
     // send data to event bus
-    await axios.post('http://localhost:4005/events', {
+    await axios.post(`http://${process.env.EVENTBUS_HOSTNAME}:${process.env.EVENTBUS_PORT}/events`, {
         type: 'Measurement received',
         measurementdata: { 
             id,

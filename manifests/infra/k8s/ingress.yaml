@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: receivedata-ingress
+spec:
+  rules:
+  - host: timostroehlein.microservices.com
+    http:
+      paths:
+      - path: /receivedata
+        pathType: Prefix
+        backend:
+          service:
+            name: receivedata-service
+            port:
+              number: 4000

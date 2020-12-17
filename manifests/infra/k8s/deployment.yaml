@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: receivedata-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: receivedata
+  template:
+    metadata:
+      labels:
+        app: receivedata
+    spec:
+      containers:
+        - name: receivedata
+          imagePullPolicy: Always
+          image: timostroehlein/dhbw-microservices-seminararbeit-receivedata:latest
+          env:
+            - name: EVENTBUS_HOSTNAME
+              value: 'localhost'
+            - name: EVENTBUS_PORT
+              value: '4005'
