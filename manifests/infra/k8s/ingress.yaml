@@ -4,7 +4,8 @@ metadata:
   name: receivedata
 spec:
   rules:
-  - http:
+  - host: timostroehlein.microservices-seminararbeit.com
+    http:
       paths:
       - path: /values
         pathType: Prefix
