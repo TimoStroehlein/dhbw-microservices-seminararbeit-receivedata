@@ -17,7 +17,7 @@ spec:
       containers:
         - name: receivedata
           imagePullPolicy: Always
-          image: timostroehlein/dhbw-microservices-seminararbeit-receivedata:latest
+          image: replace/me/receivedata
           env:
             - name: EVENTBUS_HOSTNAME
               value: 'eventbus'
